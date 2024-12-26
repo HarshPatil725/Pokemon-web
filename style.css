@@ -2,78 +2,108 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Itim&family=Karla:ital,wght@0,200..800;1,200..800&family=Londrina+Sketch&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Itim&family=Karla:ital,wght@0,200..800;1,200..800&family=Londrina+Sketch&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
-body{
+p {
     margin: 0;
     padding: 0;
 }
 
-/* Home Page */
-
-#navbar{
-    display: flex;
-    /* position: fixed; */
-    height: 12vh ;
-    width: 100% ;
+body {
     margin: 0;
     padding: 0;
-    font-family: "Karla", sans-serif;
-    font-size: 18px;
-    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+#nav-bar {
+    background-color: #FFE626;
+}
+
+/* Sign in button styling */
+.signin-btn {
+    margin-right: 40px;
+    display: inline-flex;
     align-items: center;
-    background: #FFE626;
-}
-
-.logo{
-    display: flex;
-    /* width: 20vw ; */
     justify-content: center;
-    align-items: center;
-    column-gap: 15px ;
+    padding: 8px 16px;
+    /* Reduced padding */
+    background: linear-gradient(to right, #FF0000 50%, #FFFFFF 50%);
+    border: 2px solid #000000;
+    border-radius: 25px;
+    /* Reduced border-radius */
+    cursor: pointer;
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    /* Reduced font size */
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #000000;
+    position: relative;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    text-decoration: none; /* Removes underline */
 }
 
-#Poketext{
-    height: 40px ;
+/* Text styling */
+.signin-text {
+    z-index: 1;
 }
 
-.login{
-    width: 10vw;
+/* Hover effects */
+.signin-btn:hover {
+    transform: scale(1.05);
+    /* Slightly smaller scale effect */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    /* Reduced shadow size */
 }
 
-#opt-ul{
-    list-style: none ;
-    display: flex ;
-    justify-content: center ;
-    align-items: center ;
-    column-gap: 54px ;
-    margin: 0;
-    padding: 0;
+/* Animation for the Poké Ball effect */
+.signin-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 25px;
+    /* Reduced size */
+    height: 25px;
+    /* Reduced size */
+    background-color: #FFFFFF;
+    border-radius: 50%;
+    transform: translateX(-50%);
+    transition: width 0.3s ease, height 0.3s ease, transform 0.3s ease;
 }
 
-a {
-    text-decoration: none;
-    color: black;
+.signin-btn:hover::before {
+    width: 30px;
+    /* Slightly smaller size */
+    height: 30px;
+    /* Slightly smaller size */
+    transform: translateX(-50%) scale(1.2);
+    /* Slightly smaller scale */
 }
 
-#hero{
+
+#hero {
     display: flex;
     flex-direction: column;
-    background-image : url('Background.svg');
+    background-color: #FFD589;
+    background-image: url('Background.svg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    height: 88vh ;
+    height: calc(100vh - 86px);
     /* justify-content: center; */
     align-items: center;
     /* margin : 50px ; */
 }
 
-.hero-text{
+.hero-text {
+    display: flex;
+    flex-direction: column;
+    row-gap: 3vh;
     text-align: left;
     width: 40vw;
     margin-top: 20vh;
 }
 
-.hero-text h1{
+.hero-text h1 {
     margin: 0;
     padding: 0;
     text-align: left;
@@ -81,25 +111,26 @@ a {
     font-size: 40px;
 }
 
-.hero-text p{
+.hero-text p {
     font-family: "Poppins", sans-serif;
-    font-size: 20px ;
+    font-size: 20px;
     font-weight: 100;
     line-height: 1.5;
 }
 
-#hero-ul{
-    list-style: none ;
+#hero-ul {
+    list-style: none;
     margin: 0;
     padding: 0;
 }
 
-.cta{
+.cta {
     margin-top: 5vh;
     font-family: "Inria Sans", sans-serif;
 }
 
-.rec{
+.cta {
+    padding: 0;
     display: flex;
     background: linear-gradient(135deg, rgb(255, 255, 0) 0%, rgb(255, 110.00000104308128, 0) 100%);
     background-color: transparent;
@@ -108,4 +139,9 @@ a {
     width: 180px;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
+}
+
+.cta p {
+    margin: 0;
 }
