@@ -64,14 +64,26 @@ const handleSignin = (email, password) => {
 
     if (user) {
         alert(`Welcome back ${user.name}`)
-        window.location = "Home.html"
-        const signinbtntext = document.getElementById("signinbtn-text")
+        const signinbtntext = document.querySelector(".signin-text")
         signinbtntext.innerText = user.name
+
+        user.loggedIn = true ;
+        localStorage.setItem('users', JSON.stringify(users));
+
+        window.location = "Home.html"
     }
     else {
         alert("Invalid credentials !!!")
     }
-
     signinform.reset()
-
 }
+
+let users = JSON.parse(localStorage.getItem("users"))
+console.log(users);
+users.forEach(user => {
+    if (user.loggedIn === true){
+        console.log(user)
+        const signinbtntext = document.querySelector(".signin-text")
+        signinbtntext.innerText = user.name
+    }
+});
