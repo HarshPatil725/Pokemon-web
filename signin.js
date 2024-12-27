@@ -14,39 +14,9 @@ signinform.addEventListener("submit", function (e) {
         alert("Enter all Credentials !!!")
     }
     else {
-        const handleSignin = (email, password) => {
-            const users = JSON.parse(localStorage.getItem("users")) || []
-            const user = users.find(user => user.email === email && user.password === password)
-
-            if (user) {
-                alert(`Welcome back ${user.name}`)
-            }
-            else {
-                alert("Invalid credentials !!!")
-            }
-            signinform.reset()
-        }
-
-        handleSignin(email,password)
+        handleSignin(email, password)
     }
 })
-
-function handleSignup(name, email, password) {
-    const users = JSON.parse(localStorage.getItem("users")) || [];
-    const userExist = users.some(user => user.email === email) // User exists or not
-  
-    // User Exists then
-    if (userExist) {
-      alert("Email is already registered. Please sign in.");
-      return;
-    }
-  
-    users.push({ name, email, password })
-    localStorage.setItem("users", JSON.stringify(users))
-    alert("Sign-Up successful !!!");
-    form.reset(); // Reset the form after successful sign-up
-  
-  }
 
 // Sign up Logic
 signupform.addEventListener("submit", function (e) {
@@ -61,24 +31,47 @@ signupform.addEventListener("submit", function (e) {
         alert("Enter all Credentials !!!")
     }
     else {
-        const handleSignup = (name, email, password) => {
-            const users = JSON.parse(localStorage.getItem("users")) || []
-            const userExist = users.some(user => user.email === email)
+        handleSignup(name, email, password)
+    }
+})
 
-        if (userExist) {
-            alert("Email is already registered. Please sign in.");
-            return;
-        }
+// Sign up Function
+const handleSignup = (name, email, password) => {
+    const users = JSON.parse(localStorage.getItem("users")) || []
+    const userExist = users.some(user => user.email === email)
 
-        users.push({ name, email, password })
-        localStorage.setItem("users", JSON.stringify(users))
-        alert("Sign-Up successful !!!");
+    if (userExist) {
+        alert("Email is already registered. Please sign in.");
         signupform.reset();
         const signUpModal = bootstrap.Modal.getInstance(document.getElementById("signup-modal"))
         signUpModal.hide();
-        }
-        
-        handleSignup(name,email,password)
-
+        return;
     }
-})
+
+    users.push({ name, email, password })
+    localStorage.setItem("users", JSON.stringify(users))
+    alert("Sign-Up successful !!!");
+    signupform.reset();
+    const signUpModal = bootstrap.Modal.getInstance(document.getElementById("signup-modal"))
+    signUpModal.hide();
+}
+
+
+// Sign in function
+const handleSignin = (email, password) => {
+    const users = JSON.parse(localStorage.getItem("users")) || []
+    const user = users.find(user => user.email === email && user.password === password)
+
+    if (user) {
+        alert(`Welcome back ${user.name}`)
+        window.location = "Home.html"
+        const signinbtntext = document.getElementById("signinbtn-text")
+        signinbtntext.innerText = user.name
+    }
+    else {
+        alert("Invalid credentials !!!")
+    }
+
+    signinform.reset()
+
+}

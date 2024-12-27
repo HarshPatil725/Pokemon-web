@@ -99,7 +99,8 @@ body {
     flex-direction: column;
     row-gap: 3vh;
     text-align: left;
-    width: 40vw;
+    width: 100%;
+    max-width: 400px;
     margin-top: 20vh;
 }
 
@@ -145,3 +146,11 @@ body {
 .cta p {
     margin: 0;
 }
+
+@media only screen and (max-width: 480px) {
+    #hero{
+        background-color: #FFD589;
+        background-image: none;
+    }
+  }
+ 
